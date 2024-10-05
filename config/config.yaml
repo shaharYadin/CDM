@@ -1,5 +1,5 @@
 general:  
-  mode: 'likelihood_eval' #training/sampling/likelihood_eval
+  mode: 'training' #training/sampling/likelihood_eval
   dataset: 'CIFAR10' #CIFAR10/celebA_64
   dataset_path: "/path/to/dataset" #Relevant only for celebA
   model_arch: 'ddpm_unet_small' #ddpm_unet_small (for CIFAR10)/ ddpm_unet_large (for celebA_64)
@@ -10,7 +10,7 @@ general:
 
 training:
   num_iterations: 500000
-  lr: 0.0001 
+  lr: 0.0002 
   batch_size: 128
   val_freq: 5 
   sample_val_images: 10
