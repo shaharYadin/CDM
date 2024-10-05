@@ -68,4 +68,4 @@ All operations (training, sampling, and likelihood evaluation) can be run using 
 
 ## Sources
 
-The model/diffusion.py code was adapted from the following [Denising Diffusion Implicit Models](https://github.com/ermongroup/ddim).
+The code in models/diffusion.py was adapted from the following [Denising Diffusion Implicit Models](https://github.com/ermongroup/ddim).
