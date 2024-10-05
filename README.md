@@ -61,7 +61,7 @@ To generate random samples, please first train CDM (as described above), then:
 
 ### Running the Code
 
-All operations (training, sampling, and likelihood evaluation) can be run using on of the following commands:
+All operations (training, sampling, and likelihood evaluation) can be run using one of the following commands:
 
 1. python main.py
 2. accelerate launch main.py
