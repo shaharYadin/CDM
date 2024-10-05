@@ -12,7 +12,7 @@ Samples from CDM of CelebA 64x64 and CIFAR-10
 
 ![](imgs/gen_examples.png)
 
-## A diagram of CDM
+## A Diagram of CDM
 
 ![1728129127348](image/README/1728129127348.png)
 
