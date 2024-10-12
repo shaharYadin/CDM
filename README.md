@@ -11,7 +11,7 @@
 To install the necessary dependencies, run the following command:
 
 ```bash
-pip install diffusers torch torchvision accelerate wandb matplotlib
+pip install torch torchvision accelerate wandb matplotlib
 ```
 ## Random Samples from CDM
 
