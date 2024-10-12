@@ -5,6 +5,12 @@
 🔗 [`Project Webpage`](https://shaharyadin.github.io/CDM/)  | <img src="https://info.arxiv.org/brand/images/brand-logomark-primary-large.jpg" style="width:12px;">  [`ArXiv`](https://arxiv.org/abs/2402.10095)
 
 ### [NeurIPS 2024] Official pytorch implementation of the paper: "Classification Diffusion Models: Revitalizing Density Ratio Estimaion"
+## Installation
+
+To install the necessary dependencies, run the following command:
+
+```bash
+pip install diffusers torch torchvision accelerate wandb matplotib
 
 ## Random Samples from CDM
 
