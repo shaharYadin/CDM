@@ -1,6 +1,8 @@
 # Classification Diffusion Models: Revitalizing Density Ratio Estimation
 
-[Arxiv](https://arxiv.org/abs/2402.10095)
+<a href="https://www.linkedin.com/in/shahar-yadin-069725195/">Shahar Yadin</a>, <a href="https://noamelata.github.io/">Noam Elata</a>, <a href="https://tomer.net.technion.ac.il/">Tomer Michaeli</a>, Technion - Israel Institute of Technology.<br />
+
+🔗 [`Project Webpage`](https://shaharyadin.github.io/CDM/)  | <img src="https://info.arxiv.org/brand/images/brand-logomark-primary-large.jpg" style="width:12px;">  [`ArXiv`](https://arxiv.org/abs/2402.10095)
 
 ### [NeurIPS 2024] Official pytorch implementation of the paper: "Classification Diffusion Models: Revitalizing Density Ratio Estimaion"
 
@@ -63,9 +65,9 @@ To generate random samples, please first train CDM (as described above), then:
 
 All operations (training, sampling, and likelihood evaluation) can be run using one of the following commands:
 
-1. python main.py
-2. accelerate launch main.py
+1. ```python main.py```
+2. ```accelerate launch main.py```
 
 ## Sources
 
-The code in models/diffusion.py was adapted from the following [Denising Diffusion Implicit Models](https://github.com/ermongroup/ddim).
+The code in models/diffusion.py was adapted from the following [Denoising Diffusion Implicit Models](https://github.com/ermongroup/ddim).
