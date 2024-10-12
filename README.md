@@ -6,6 +6,13 @@
 
 ### [NeurIPS 2024] Official pytorch implementation of the paper: "Classification Diffusion Models: Revitalizing Density Ratio Estimaion"
 
+## Installation
+
+To install the necessary dependencies, run the following command:
+
+```bash
+pip install diffusers torch torchvision accelerate wandb matplotlib
+```
 ## Random Samples from CDM
 
 Samples from CDM of CelebA 64x64 and CIFAR-10
