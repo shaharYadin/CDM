@@ -1,9 +1,9 @@
 general:  
-  mode: 'training' #training/sampling/likelihood_eval
+  mode: 'training' #training/FM_training/sampling/FM_sampling/likelihood_eval
   dataset: 'CIFAR10' #CIFAR10/celebA_64
   dataset_path: "/path/to/dataset" #Relevant only for celebA
   model_arch: 'ddpm_unet_small' #ddpm_unet_small (for CIFAR10)/ ddpm_unet_large (for celebA_64)
-  num_classes_cond:  #Whether to use class conditional model. If None, the model is unconditional
+  num_classes_cond: #Whether to use class conditional model. If None, the model is unconditional
   beta_start: 0.0001 
   beta_end: 0.02 
   noise_steps: 1000
@@ -22,12 +22,12 @@ training:
   
 
 sampling:
-  ckpt_folder: '2024-10-05 12:53:42.952761'
-  ckpt_file: 'mode=training_dataset=CIFAR10_model_arch=ddpm_unet_small_noise_steps=1000_num_classes_cond=None_last_epoch'
+  ckpt_folder: "/path/to/ckpt"
+  ckpt_file: "/path/to/ckpt"
   num_samples: 10
   image_shape: 32 
-  sampler: 'ddim' #ancestral_ddpm/max_sigma_ddpm/ddim
-  num_sampling_steps: 50 
+  sampler: 'ddpm' #ddpm/ddim/second_order_dpm_solver
+  num_sampling_steps: 1000
   labels:  # The label of the generated class, relevant only for conditional models
   w_cfg:   # Classifier free guidance scale 
 

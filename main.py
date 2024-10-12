@@ -86,10 +86,11 @@ def main():
 
     #####################Model##########################
     in_channels =  3
+    out_channels = noise_steps if (mode == 'FM_training' or mode == 'FM_sampling') else noise_steps + 2
     if model_arch == 'ddpm_unet_small':
-        model = DDPM_Unet(in_channels=in_channels, out_channels=noise_steps+2, channels=128, image_size=train_res, resamp_with_conv=True, ch_mult=[1, 2, 2, 2], num_res_blocks=2, attn_resolutions=[16,], dropout=0.1, num_classes=num_classes_cond)
+        model = DDPM_Unet(in_channels=in_channels, out_channels=out_channels, channels=128, image_size=train_res, resamp_with_conv=True, ch_mult=[1, 2, 2, 2], num_res_blocks=2, attn_resolutions=[16,], dropout=0.1, num_classes=num_classes_cond)
     elif model_arch == 'ddpm_unet_large':
-        model = DDPM_Unet(in_channels=in_channels, out_channels=noise_steps+2, channels=128, image_size=train_res, resamp_with_conv=True, ch_mult=[1, 2, 2, 2, 4], num_res_blocks=2, attn_resolutions=[16,], dropout=0.1, num_classes=num_classes_cond)
+        model = DDPM_Unet(in_channels=in_channels, out_channels=out_channels, channels=128, image_size=train_res, resamp_with_conv=True, ch_mult=[1, 2, 2, 2, 4], num_res_blocks=2, attn_resolutions=[16,], dropout=0.1, num_classes=num_classes_cond)
     else:
         raise NotImplementedError()
     
@@ -124,20 +125,34 @@ def main():
         cdm.train(train_dataset=trainset, val_dataset=valset, save_ckpt_freq=save_ckpt_freq, sample_val_images=sample_val_images, num_iterations=num_iterations, sampler=sampler)
         accelerator.end_training()
     
+    elif mode == 'FM_training':
+        if train_val_set is not None:#For this dataset, training and validation have already splited 
+            if val_freq is not None:
+                val_size = int(len(train_val_set) * 0.1)
+                train_size = len(train_val_set) - val_size
+                trainset, valset = torch.utils.data.random_split(train_val_set, [train_size, val_size])
+            else:
+                trainset = train_val_set
+                valset = None 
+        cdm.FM_train(train_dataset=trainset, val_dataset=valset, save_ckpt_freq=save_ckpt_freq, sample_val_images=sample_val_images, num_iterations=num_iterations)
+        accelerator.end_training()
+    
     elif mode == 'sampling':
-        
         if num_classes_cond is not None and labels is not None:
             labels = torch.tensor([labels] * num_samples).to(accelerator.device)
         else:
             labels = None
-
         sampled_imgs = cdm.sample(num_samples=num_samples, image_shape=image_shape, labels=labels, w_cfg=w_cfg, sampler=sampler, validation=False)
         plot_images(sampled_imgs, figsize=(40,4))
     
-
+    elif mode == 'FM_sampling':
+        sampled_imgs = cdm.FM_sample(num_samples=num_samples, image_shape=image_shape, validation=False, num_sampling_steps=num_sampling_steps)
+        plot_images(sampled_imgs, figsize=(40,4))
+    
     elif mode == 'likelihood_eval':
         nll = cdm.calc_nll(testset=valset)
         print(f'negative log likelihood: {nll}')
+
     else:
         raise NotImplementedError()
 
