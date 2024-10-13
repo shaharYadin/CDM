@@ -3,7 +3,7 @@ general:
   dataset: 'CIFAR10' #CIFAR10/celebA_64
   dataset_path: "/path/to/dataset" #Relevant only for celebA
   model_arch: 'ddpm_unet_small' #ddpm_unet_small (for CIFAR10)/ ddpm_unet_large (for celebA_64)
-  num_classes_cond: #Whether to use class conditional model. If None, the model is unconditional
+  num_classes_cond: #Number of classes in class conditional model. If None, the model is unconditional
   beta_start: 0.0001 
   beta_end: 0.02 
   noise_steps: 1000
