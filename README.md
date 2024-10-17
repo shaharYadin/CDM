@@ -15,7 +15,7 @@ A DDM functions as an MMSE denoiser conditioned on the noise level, whereas a CD
 
 ### Random Samples from CDM
 
-Samples from CDM of CelebA 64x64 and CIFAR-10
+Samples from CDMs trained on CelebA 64x64 and on CIFAR-10
 
 ![1728128708865](image/README/1728128708865.png)
 
